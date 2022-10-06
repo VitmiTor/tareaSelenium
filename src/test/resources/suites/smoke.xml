@@ -3,7 +3,7 @@
 <suite name="Smoke suite" verbose="0" time-out="60000">
     <groups>
         <run>
-            <include name="Smoke"/>
+            <include name="smoke"/>
         </run>
     </groups>
 
@@ -12,21 +12,21 @@
         <listener class-name="listeners.SuiteListeners"/>
     </listeners>
 
-    <test name="Tests de lectura de excel">
+    <test name="Tests de lectura de URL">
         <packages>
-            <package name="excelReader"/>
+            <package name="primerTest"/>
         </packages>
     </test>
 
     <test name="Tests de Json">
         <packages>
-            <package name="jsonReader"/>
+            <package name=""/>
         </packages>
     </test>
 
     <test name="Test de Maestro pokemon">
         <packages>
-            <package name="MaestroPokemonTests"/>
+            <package name=""/>
         </packages>
     </test>
 </suite>

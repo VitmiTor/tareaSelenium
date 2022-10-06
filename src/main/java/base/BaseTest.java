@@ -1,13 +1,18 @@
 package base;
 
+import listeners.SuiteListeners;
+import listeners.TestListeners;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.asserts.SoftAssert;
 import utilities.DriverManager;
 import utilities.Logs;
 import utilities.Utilities;
 
+@Listeners({SuiteListeners.class, TestListeners.class})
 public class BaseTest {
     protected final Logs logs = new Logs();
     private final DriverManager driverManager = new DriverManager();
@@ -18,6 +23,9 @@ public class BaseTest {
     protected Utilities utilities = new Utilities();
     protected final String browsername = "Chrome";
     protected final String mainUrl = "http://the-internet.herokuapp.com/login";
+    protected final String mainUrl2 = "http://the-internet.herokuapp.com/checkboxes";
+    protected final String mainUrl3 = "http://the-internet.herokuapp.com/add_remove_elements/";
+    protected final String mainUrl4 = "http://the-internet.herokuapp.com/status_codes";
 
     @BeforeMethod(alwaysRun = true, description = "Master precondition")
     public void setUpBase() {
@@ -25,9 +33,14 @@ public class BaseTest {
         driver = driverManager.createDriver();
 
         logs.info("ingresando a la url");
-        driver.get(mainUrl);
+        driver.get(mainUrl4);
         logs.info("waiting 2 seconds");
         utilities.waitSeconds(2);
+    }
+
+    protected void setDriver(ITestResult result) {
+        var currentClass = result.getInstance();
+        driver = ((BaseTest) currentClass).getDriver(); //for the test listeners
     }
 
     @AfterMethod
@@ -35,4 +48,9 @@ public class BaseTest {
         logs.debug("Killing the driver");
         driver.quit();
     }
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+
 }

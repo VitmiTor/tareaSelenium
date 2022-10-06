@@ -22,10 +22,7 @@ public class BaseTest {
     protected final String regression = "regression";
     protected Utilities utilities = new Utilities();
     protected final String browsername = "Chrome";
-    protected final String mainUrl = "http://the-internet.herokuapp.com/login";
-    protected final String mainUrl2 = "http://the-internet.herokuapp.com/checkboxes";
-    protected final String mainUrl3 = "http://the-internet.herokuapp.com/add_remove_elements/";
-    protected final String mainUrl4 = "http://the-internet.herokuapp.com/status_codes";
+    protected final String mainUrl = "http://the-internet.herokuapp.com/";
 
     @BeforeMethod(alwaysRun = true, description = "Master precondition")
     public void setUpBase() {
@@ -33,7 +30,7 @@ public class BaseTest {
         driver = driverManager.createDriver();
 
         logs.info("ingresando a la url");
-        driver.get(mainUrl4);
+        driver.get(mainUrl);
         logs.info("waiting 2 seconds");
         utilities.waitSeconds(2);
     }

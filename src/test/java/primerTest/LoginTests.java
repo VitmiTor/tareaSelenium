@@ -9,9 +9,11 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class LoginTests extends BaseTest {
-    
+
     @Test(groups = {smoke, regression})
     public void login() {
+        var linkLoginPage = driver.findElement(By.linkText("Form Authentication"));
+        linkLoginPage.click();
         utilities.waitSeconds(2);
         var usernameInput = driver.findElement(By.id("username"));
         var passwordInput = driver.findElement(By.id("password"));
@@ -28,11 +30,11 @@ public class LoginTests extends BaseTest {
         var greenframeVisible = driver.findElement(By.id("flash"));
         var logoutInput = driver.findElement(By.cssSelector("i[class='icon-2x icon-signout']"));
 
-        logs.debug("verificando el cuadro verde");
+        logs.info("verificando el cuadro verde");
         Assert.assertTrue(greenframeVisible.isDisplayed());
-        logs.debug("verificando el botón este visible");
+        logs.info("verificando el botón este visible");
         Assert.assertTrue(logoutInput.isDisplayed());
-        logs.debug("Haciendo logout click");
+        logs.info("Haciendo logout click");
         logoutInput.click();
 
         usernameInput = driver.findElement(By.id("username"));
@@ -56,6 +58,8 @@ public class LoginTests extends BaseTest {
     @Test(groups = {regression})
     public void exercise3() {
         logs.info("Realizando ejercicio 3");
+        var checkBoxesPage = driver.findElement(By.linkText("Checkboxes"));
+        checkBoxesPage.click();
         utilities.waitSeconds(2);
         var checkBox1Input = driver.findElements(By.cssSelector("input[type='checkbox']"));
         List<WebElement> checkboxList = checkBox1Input;
@@ -76,6 +80,8 @@ public class LoginTests extends BaseTest {
     @Test(groups = {regression})
     public void exercise4() {
         logs.info("Realizando ejercicio 4");
+        var addElementsPage = driver.findElement(By.linkText("Add/Remove Elements"));
+        addElementsPage.click();
         utilities.waitSeconds(2);
         var buttonAddInput = driver.findElement(By.xpath("//button[text()='Add Element']"));
         for (var i = 0; i <= 9; i++) {
@@ -95,6 +101,9 @@ public class LoginTests extends BaseTest {
 
     @Test(groups = {smoke, regression})
     public void exercise5() {
+        logs.info("Realizando el ejercicio 5");
+        var statusPage = driver.findElement(By.linkText("Status Codes"));
+        statusPage.click();
         utilities.waitSeconds(2);
         var link404 = driver.findElement(By.linkText("404"));
         utilities.waitSeconds(2);

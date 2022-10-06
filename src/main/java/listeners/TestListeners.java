@@ -32,7 +32,7 @@ public class TestListeners implements ITestListener {
         logs.endTest("Fail");
         var driverManager = new DriverManager();
         var driver = getDriverFromResult(result);
-        new DriverManager().getScreenshot(driver, result.getName());
+        driverManager.getScreenshot(driver, result.getName());
         driverManager.attachAllureScreenShot(driver);
     }
 
@@ -60,6 +60,4 @@ public class TestListeners implements ITestListener {
     public void onFinish(ITestContext context) {
         ITestListener.super.onFinish(context);
     }
-
-
 }

@@ -71,7 +71,6 @@ public class DriverManager {
     public byte[] attachAllureScreenShot(WebDriver driver) {
         logs.debug("Attaching screenshot to allure");
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-
     }
 
     public void deleteScreenShotDirectory() {

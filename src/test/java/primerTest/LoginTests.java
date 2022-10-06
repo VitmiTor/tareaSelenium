@@ -64,6 +64,7 @@ public class LoginTests extends BaseTest {
         usernameInput.sendKeys("hola123");
         logs.info("ingresando la contrasenia erronea");
         passwordInput.sendKeys("heheheeh");
+        logs.info("Click en el button de login");
         buttonInput.click();
 
         utilities.waitSeconds(2);
@@ -78,6 +79,7 @@ public class LoginTests extends BaseTest {
         var checkBoxesPage = driver.findElement(By.linkText("Checkboxes"));
         logs.info("ingresnado al Page de checkBoxes");
         checkBoxesPage.click();
+
         utilities.waitSeconds(2);
         var checkboxList = driver.findElements(By.cssSelector("input[type='checkbox']"));
 
@@ -106,20 +108,25 @@ public class LoginTests extends BaseTest {
         var addElementsPage = driver.findElement(By.linkText("Add/Remove Elements"));
         logs.info("ingresnado al addPage");
         addElementsPage.click();
+
         utilities.waitSeconds(2);
         var buttonAddInput = driver.findElement(By.xpath("//button[text()='Add Element']"));
+        logs.info("Haciendo click 10 veces en el add Element");
         for (var i = 0; i < 10; i++) {
             buttonAddInput.click();
         }
         utilities.waitSeconds(5);
+
         var buttonDeleteList = driver.findElements(By.className("added-manually"));
         logs.info("verificando que el listado sea de tamanio 10");
         Assert.assertEquals(buttonDeleteList.size(), 10);
+
         logs.info("Realizar click en todos los buttons delete");
         for (var i = 0; i < 10; i++) {
             buttonDeleteList.get(i).click();
         }
         buttonDeleteList = driver.findElements(By.className("added-manually"));
+
         logs.info("verificando que el listado sea de tamanio 0");
         Assert.assertEquals(buttonDeleteList.size(), 0);
     }
@@ -130,7 +137,7 @@ public class LoginTests extends BaseTest {
         var statusPage = driver.findElement(By.linkText("Status Codes"));
         statusPage.click();
         utilities.waitSeconds(2);
-        
+
         logs.info("Click en el 404");
         var link404 = driver.findElement(By.linkText("404"));
         utilities.waitSeconds(2);

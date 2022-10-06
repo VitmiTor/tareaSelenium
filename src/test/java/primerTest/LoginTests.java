@@ -45,8 +45,6 @@ public class LoginTests extends BaseTest {
         logs.info("verificando que username este visible");
         Assert.assertTrue(usernameInput.isDisplayed());
 
-        logs.info("Realizando el test Regression -> test 2");
-
         usernameInput = driver.findElement(By.id("username"));
         logs.info("verificando que username este visible");
         Assert.assertTrue(usernameInput.isDisplayed());

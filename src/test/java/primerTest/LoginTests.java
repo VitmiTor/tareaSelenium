@@ -54,7 +54,7 @@ public class LoginTests extends BaseTest {
         usernameInput = driver.findElement(By.id("username"));
         logs.info("verificando que username este visible");
         Assert.assertTrue(usernameInput.isDisplayed());
-        
+
         passwordInput = driver.findElement(By.id("password"));
         logs.info("verificando que password este visible");
         Assert.assertTrue(passwordInput.isDisplayed());
@@ -130,12 +130,15 @@ public class LoginTests extends BaseTest {
         var statusPage = driver.findElement(By.linkText("Status Codes"));
         statusPage.click();
         utilities.waitSeconds(2);
+        
         logs.info("Click en el 404");
         var link404 = driver.findElement(By.linkText("404"));
         utilities.waitSeconds(2);
+
         logs.info("Click en el here");
         var linkHere = driver.findElement(By.linkText("here"));
         utilities.waitSeconds(2);
+
         logs.info("verificando la url sea el mismo");
         Assert.assertEquals(driver.getCurrentUrl(), "http://the-internet.herokuapp.com/status_codes");
     }

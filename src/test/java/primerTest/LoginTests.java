@@ -61,8 +61,7 @@ public class LoginTests extends BaseTest {
         var checkBoxesPage = driver.findElement(By.linkText("Checkboxes"));
         checkBoxesPage.click();
         utilities.waitSeconds(2);
-        var checkBox1Input = driver.findElements(By.cssSelector("input[type='checkbox']"));
-        List<WebElement> checkboxList = checkBox1Input;
+        var checkboxList = driver.findElements(By.cssSelector("input[type='checkbox']"));
 
         var firstCheckBox = checkboxList.get(0);
         var secondCheckBox = checkboxList.get(1);
@@ -84,14 +83,14 @@ public class LoginTests extends BaseTest {
         addElementsPage.click();
         utilities.waitSeconds(2);
         var buttonAddInput = driver.findElement(By.xpath("//button[text()='Add Element']"));
-        for (var i = 0; i <= 9; i++) {
+        for (var i = 0; i < 10; i++) {
             buttonAddInput.click();
         }
         utilities.waitSeconds(5);
         var buttonDeletes = driver.findElements(By.className("added-manually"));
         List<WebElement> buttonDeleteList = buttonDeletes;
         Assert.assertEquals(buttonDeleteList.size(), 10);
-        for (var i = 0; i <= 9; i++) {
+        for (var i = 0; i < 10; i++) {
             buttonDeleteList.get(i).click();
         }
         buttonDeletes = driver.findElements(By.className("added-manually"));

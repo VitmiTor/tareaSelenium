@@ -12,21 +12,9 @@
         <listener class-name="listeners.SuiteListeners"/>
     </listeners>
 
-    <test name="Tests de lectura de URL">
+    <test name="Tests de Login smoke">
         <packages>
             <package name="primerTest"/>
-        </packages>
-    </test>
-
-    <test name="Tests de Json">
-        <packages>
-            <package name=""/>
-        </packages>
-    </test>
-
-    <test name="Test de Maestro pokemon">
-        <packages>
-            <package name=""/>
         </packages>
     </test>
 </suite>

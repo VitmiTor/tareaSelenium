@@ -19,12 +19,16 @@ public class LoginTests extends BaseTest {
 
         logs.info("verificando que este visible username");
         Assert.assertTrue(usernameInput.isDisplayed());
+
         logs.info("ingresando el username");
         usernameInput.sendKeys("tomsmith");
+
         logs.info("verificando que el password este visible");
         Assert.assertTrue(passwordInput.isDisplayed());
+
         logs.info("ingresando la contrasenia");
         passwordInput.sendKeys("SuperSecretPassword!");
+
         logs.info("verificando que el boton este visible");
         Assert.assertTrue(buttonInput.isDisplayed());
         logs.info("clcik en el boton login");
@@ -36,8 +40,10 @@ public class LoginTests extends BaseTest {
 
         logs.info("verificando el cuadro verde");
         Assert.assertTrue(greenframeVisible.isDisplayed());
+
         logs.info("verificando el botón este visible");
         Assert.assertTrue(logoutInput.isDisplayed());
+
         logs.info("Haciendo logout click");
         logoutInput.click();
 
@@ -48,15 +54,18 @@ public class LoginTests extends BaseTest {
         usernameInput = driver.findElement(By.id("username"));
         logs.info("verificando que username este visible");
         Assert.assertTrue(usernameInput.isDisplayed());
+        
         passwordInput = driver.findElement(By.id("password"));
         logs.info("verificando que password este visible");
         Assert.assertTrue(passwordInput.isDisplayed());
         buttonInput = driver.findElement(By.className("radius"));
+
         logs.info("ingresando el admin erroneo");
         usernameInput.sendKeys("hola123");
         logs.info("ingresando la contrasenia erronea");
         passwordInput.sendKeys("heheheeh");
         buttonInput.click();
+
         utilities.waitSeconds(2);
         var redframeInput = driver.findElement(By.id("flash"));
         logs.info("verificando que el cuadro rojo sea visible");
@@ -79,7 +88,9 @@ public class LoginTests extends BaseTest {
         Assert.assertFalse(firstCheckBox.isSelected());
         logs.info("verificando que el segundo check este seleccionado");
         Assert.assertTrue(secondCheckBox.isSelected());
+        logs.info("click en el primer check");
         firstCheckBox.click();
+        logs.info("click en el segundo check");
         secondCheckBox.click();
 
         utilities.waitSeconds(3);

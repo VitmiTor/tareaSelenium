@@ -19,7 +19,7 @@ public class LoginPage extends BasePage {
 
     @Override
     public void waitPageToLoad() {
-
+        waitPage(loginLinkInput, this.getClass().getSimpleName());
     }
 
     @Override

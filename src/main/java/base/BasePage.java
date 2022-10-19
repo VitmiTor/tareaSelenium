@@ -21,6 +21,10 @@ public abstract class BasePage {
         softAssert = new SoftAssert();
     }
 
+    protected void waitPage($ element, String pageName) {
+        
+    }
+
     protected $ $(By locator) {
         return new $(locator, driver);
     }

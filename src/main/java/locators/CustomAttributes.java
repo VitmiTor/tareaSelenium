@@ -4,15 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class CustomVerifications {
+public class CustomAttributes {
     private WebElement element;
 
     public void findElement(By locator, WebDriver driver) {
-        element = driver.findElement(locator);
+        element.findElement(locator);
     }
 
-    public boolean verifyDisplayed(By locator, WebDriver driver) {
-        element = driver.findElement(locator);
-        return element.isDisplayed();
+    public String getText(By locator, WebDriver driver) {
+        findElement(locator, driver);
+        return element.getText();
     }
 }

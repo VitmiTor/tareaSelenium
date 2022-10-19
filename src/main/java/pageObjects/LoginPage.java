@@ -1,17 +1,20 @@
 package pageObjects;
 
 import base.BasePage;
-import locators.CustomLocators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utilities.Logs;
+import webElements.$;
 
 public class LoginPage extends BasePage {
-    private final CustomLocators usernameInput = new CustomLocators(By.id("username"), driver);
-    private final CustomLocators passwordInput = new CustomLocators(By.id("password"), driver);
-    private final CustomLocators buttonInput = new CustomLocators(By.cssSelector("button[type='submit']"), driver);
+    private Logs logs = new Logs();
+    private final $ loginLinkInput = $(By.linkText("Form Authentication"));
+    private final $ usernameInput = $(By.id("username"));
+    private final $ passwordInput = $(By.id("password"));
+    private final $ loginButtonInput = $(By.cssSelector("button[type='submit']"));
 
     public LoginPage(WebDriver driver) {
-        super(driver);
+        super(driver, 5);
     }
 
     @Override
@@ -21,15 +24,24 @@ public class LoginPage extends BasePage {
 
     @Override
     public void verifyPage() {
-        softAssert.assertTrue();
-        softAssert.assertTrue();
+        softAssert.assertTrue(loginLinkInput.isDisplayed());
+        softAssert.assertTrue(usernameInput.isDisplayed());
+        softAssert.assertTrue(passwordInput.isDisplayed());
+        softAssert.assertTrue(loginButtonInput.isDisplayed());
         softAssert.assertAll();
     }
 
     public void fillForm(String username, String password) {
-        usernameInput.sendKeys(username);
-        passwordInput.sendKeys(password);
-        buttonInput.click();
-    }
+        logs.info("Clicking the login link");
+        loginLinkInput.click();
 
+        logs.info("Filling usernema " + username);
+        usernameInput.sendKeys(username);
+
+        logs.info("Filling password " + password);
+        passwordInput.sendKeys(password);
+
+        logs.info("Clickin on Login button");
+        loginButtonInput.click();
+    }
 }

@@ -16,6 +16,8 @@ public class DriverManager {
     protected final Logs logs = new Logs();
     private final String screenShotPath = "src/test/resources/screenshots";
 
+    private static WebDriver staticdriver;
+
     public WebDriver createDriver() {
         var browserName = System.getProperty("browser");
         if (browserName == null) {
@@ -49,6 +51,7 @@ public class DriverManager {
         driver.manage().window().maximize();
         logs.debug("Eliminado cookies");
         driver.manage().deleteAllCookies();
+        staticdriver = driver;
 
         return driver;
     }
@@ -81,5 +84,10 @@ public class DriverManager {
             logs.error("El path no existe");
             logs.error(ioException.getLocalizedMessage());
         }
+    }
+
+    @Attachment(value = "Screenshot failure", type = " image/png")
+    public static byte[] getAllureScreenShot() {
+        return ((TakesScreenshot) staticdriver).getScreenshotAs(OutputType.BYTES);
     }
 }

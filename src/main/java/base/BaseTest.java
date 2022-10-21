@@ -28,14 +28,12 @@ public abstract class BaseTest extends DriverManager {
     protected CommonFlows commonFlows;
 
     @BeforeMethod(alwaysRun = true, description = "Master precondition")
-
     public void setUpBase() {
         softAssert = new SoftAssert();
         driver = driverManager.createDriver();
-        initPages();
+        initPages(driver);
         commonFlows = new CommonFlows(driver);
-
-        commonFlows.goLoginPage();
+        commonFlows.goHomePage();
     }
 
     protected void setDriver(ITestResult result) {
@@ -43,7 +41,7 @@ public abstract class BaseTest extends DriverManager {
         driver = ((BaseTest) currentClass).getDriver(); //for the test listeners
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true, description = "Master Teardown")
     public void tearDownBase() {
         logs.debug("Killing the driver");
         driver.quit();
@@ -53,7 +51,7 @@ public abstract class BaseTest extends DriverManager {
         return driver;
     }
 
-    protected abstract void initPages();
+    protected abstract void initPages(WebDriver driver);
 
 
 }

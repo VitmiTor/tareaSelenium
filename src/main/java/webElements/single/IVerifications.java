@@ -1,4 +1,4 @@
-package webElements;
+package webElements.single;
 
 public interface IVerifications {
     boolean isDisplayed();
@@ -6,5 +6,5 @@ public interface IVerifications {
     boolean isEnable();
 
     boolean isSelected();
-    
+
 }

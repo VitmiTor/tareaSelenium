@@ -1,6 +1,7 @@
 package pageObjects;
 
 import base.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import webElements.list.$$;
@@ -25,23 +26,22 @@ public class ElementsPage extends BasePage {
 
     }
 
+    @Step("Adding element")
     public void addElement(int n) {
         for (var i = 0; i < n; i++) {
             buttonAddInput.click();
         }
     }
 
-    public void gettingSize() {
-        var number = buttonDeleteInput.getSize();
-        
-        logs.info(String.valueOf(number));
+    @Step("Getting size of elements")
+    public int gettingSize() {
+        return buttonDeleteInput.getSize();
     }
 
+    @Step("Deleting elements")
     public void deletingElement(int n) {
         for (var i = 0; i < n; i++) {
-            buttonDeleteInput.getElementIndex(i);
+            buttonDeleteInput.getFirst().click();
         }
     }
-
-
 }

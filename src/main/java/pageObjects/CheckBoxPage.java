@@ -1,6 +1,7 @@
 package pageObjects;
 
 import base.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import webElements.list.$$;
@@ -27,15 +28,17 @@ public class CheckBoxPage extends BasePage {
         softAssert.assertAll();
     }
 
-
+    @Step("CheckBox First checkBox")
     public void clickFirst() {
         checkBoxes.getFirst().click();
     }
 
+    @Step("CheckBox clicking the last checkBox")
     public void clickLast() {
         checkBoxes.getLast().click();
     }
 
+    @Step("Verifying if the checkBoxes is selected or not")
     public void verifyCheckBoxes(boolean checkBox1, boolean checkBox2) {
         softAssert.assertEquals(checkBoxes.getFirst().isSelected(), checkBox1);
         softAssert.assertEquals(checkBoxes.getLast().isSelected(), checkBox2);

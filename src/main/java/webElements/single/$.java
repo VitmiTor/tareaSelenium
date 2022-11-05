@@ -4,11 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class $ implements IActions, IVerifications, IWaits, IAttributes {
+public class $ implements IActions, IVerifications, IWaits, IAttributes, ISelect {
     private By locator;
     private final WebDriver driver;
     private WebElement webElement;
@@ -71,6 +72,36 @@ public class $ implements IActions, IVerifications, IWaits, IAttributes {
     }
 
     @Override
+    public void selectByValue(String value) {
+        getSelect().selectByValue(value);
+    }
+
+    @Override
+    public void selectByVisisbleText(String Text) {
+        getSelect().selectByVisibleText(Text);
+    }
+
+    @Override
+    public void slectByIndex(int index) {
+        getSelect().deselectByIndex(index);
+    }
+
+    @Override
+    public void deselectByValue(String value) {
+        getSelect().deselectByValue(value);
+    }
+
+    @Override
+    public void deselectByVisisbleText(String Text) {
+        getSelect().deselectByVisibleText(Text);
+    }
+
+    @Override
+    public void deslectByIndex(int index) {
+        getSelect().deselectByIndex(index);
+    }
+
+    @Override
     public $ waitForVisibility() {
         createWait(defaulTimeOut);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -82,6 +113,11 @@ public class $ implements IActions, IVerifications, IWaits, IAttributes {
         createWait(timeOut);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         return this;
+    }
+
+    private Select getSelect() {
+        findElement();
+        return new Select(webElement);
     }
 
     private void findElement() {

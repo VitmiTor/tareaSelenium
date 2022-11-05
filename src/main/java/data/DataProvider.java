@@ -17,5 +17,4 @@ public class DataProvider {
         logs.debug("getting Key");
         return mapParser.getCredentialsMap().get("invalid");
     }
-
 }

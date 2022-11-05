@@ -2,6 +2,7 @@ package primerTest;
 
 import base.BaseTest;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pageObjects.ElementsPage;
@@ -16,10 +17,12 @@ public class ElementsTest extends BaseTest {
 
     @Test
     public void addElementsTest() {
-        elementsPage.addElement(10);
-        elementsPage.gettingSize();
-        elementsPage.deletingElement(8);
-        elementsPage.gettingSize();
+        var addedElements = 10;
+        elementsPage.addElement(addedElements);
+        Assert.assertEquals(elementsPage.gettingSize(), addedElements);
+        var deletedElements = 8;
+        elementsPage.deletingElement(deletedElements);
+        Assert.assertEquals(elementsPage.gettingSize(), addedElements - deletedElements);
     }
 
     @Override

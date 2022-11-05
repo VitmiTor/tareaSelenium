@@ -22,6 +22,4 @@ public class SuccesLoginPage extends BasePage {
     public void verifyPage() {
 
     }
-
-    
 }

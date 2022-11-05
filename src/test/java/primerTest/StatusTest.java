@@ -25,6 +25,4 @@ public class StatusTest extends BaseTest {
     protected void initPages(WebDriver driver) {
         statusPage = new StatusPage(driver);
     }
-
-
 }

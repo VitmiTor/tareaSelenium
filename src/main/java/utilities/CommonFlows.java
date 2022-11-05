@@ -50,4 +50,11 @@ public class CommonFlows {
         homePage.statusPageLink();
         statusPage.waitPageToLoad();
     }
+
+    public void gotSelectPage() {
+        var dropDown = new DropDownPage(driver);
+        var homePage = new HomePage(driver);
+        homePage.dropdownPageLink();
+        dropDown.waitPageToLoad();
+    }
 }

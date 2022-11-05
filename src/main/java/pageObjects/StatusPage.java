@@ -1,6 +1,7 @@
 package pageObjects;
 
 import base.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -26,20 +27,21 @@ public class StatusPage extends BasePage {
 
     }
 
+    @Step("Clciking on status code 404")
     public void status404() {
         link404.click();
         linkHere.waitForVisibility();
-        Assert.assertTrue(linkHere.isDisplayed());
     }
 
+    @Step("Clicking on go Back")
     public void goBack() {
         linkHere.click();
     }
 
+    @Step("verifying URL")
     public void verifyUrl() {
         link404.waitForVisibility();
         var mainmUrl = "http://the-internet.herokuapp.com/status_codes";
         Assert.assertEquals(mainmUrl, driver.getCurrentUrl());
     }
-
 }

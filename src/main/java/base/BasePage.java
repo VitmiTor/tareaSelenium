@@ -10,7 +10,7 @@ import webElements.single.$;
 public abstract class BasePage {
     protected final WebDriver driver;
     private final int timeOut;
-    protected final Logs logs = new Logs();
+    protected Logs logs = new Logs();
 
     private final int defaultTimeOut = 5;
 

@@ -1,13 +1,12 @@
 package pageObjects;
 
 import base.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import utilities.Logs;
 import webElements.single.$;
 
 public class LoginPage extends BasePage {
-    private Logs logs = new Logs();
 
     private final $ usernameInput = $(By.id("username"));
     private final $ passwordInput = $(By.id("password"));
@@ -31,6 +30,7 @@ public class LoginPage extends BasePage {
         softAssert.assertAll();
     }
 
+    @Step("filling form")
     public void fillForm(String username, String password) {
         logs.info("Filling username " + username);
         usernameInput.sendKeys(username);
@@ -42,9 +42,10 @@ public class LoginPage extends BasePage {
         loginButtonInput.click();
     }
 
+    @Step("Verifying Error Message")
     public void verifyErrorMessage(String errorText) {
         errorMessage.waitForVisibility();
-        logs.debug(errorMessage.getText());
+        logs.info(errorMessage.getText());
         softAssert.assertTrue(errorMessage.isDisplayed(), "displayed");
         softAssert.assertTrue(errorMessage.getText().contains(errorText), "text");
         softAssert.assertAll();

@@ -15,6 +15,4 @@ public class ExcelReader {
         logs.debug("leyendo Excel");
         return Poiji.fromExcel(new File(excelPath), Credentials.class);
     }
-    
-
 }

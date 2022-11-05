@@ -7,13 +7,12 @@ import org.openqa.selenium.WebDriver;
 import webElements.single.$;
 
 public class HomePage extends BasePage {
-
-
     private final $ title = $(By.xpath("//h1[text()='Welcome to the-internet']"));
     private final $ checkBoxLinkInput = $(By.linkText("Checkboxes"));
     private final $ loginLinkInput = $(By.linkText("Form Authentication"));
     private final $ addElementsLinkInput = $(By.linkText("Add/Remove Elements"));
     private final $ statusLinkInput = $(By.linkText("Status Codes"));
+    private final $ dropdownLink = $(By.linkText("Dropdown"));
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -53,4 +52,9 @@ public class HomePage extends BasePage {
         statusLinkInput.click();
     }
 
+    @Step()
+    public void dropdownPageLink() {
+        logs.info("Clicking dropdown Link");
+        dropdownLink.click();
+    }
 }

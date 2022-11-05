@@ -15,7 +15,7 @@ public class ElementsTest extends BaseTest {
         commonFlows.goAddElementsPage();
     }
 
-    @Test
+    @Test(groups = smoke)
     public void addElementsTest() {
         var addedElements = 10;
         elementsPage.addElement(addedElements);

@@ -13,8 +13,8 @@ public class CheckBoxesTest extends BaseTest {
     public void setUp() {
         commonFlows.goCheckBoxPage();
     }
-    
-    @Test(groups = {regression})
+
+    @Test(groups = {smoke})
     public void checkboxFunctionTest() {
         checkBoxPage.verifyCheckBoxes(false, true);
         checkBoxPage.clickFirst();

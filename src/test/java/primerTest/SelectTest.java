@@ -9,12 +9,12 @@ import pageObjects.DropDownPage;
 public class SelectTest extends BaseTest {
     DropDownPage dropDownPage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         commonFlows.gotSelectPage();
     }
 
-    @Test
+    @Test(groups = smoke)
     public void selectTest() {
         dropDownPage.dropDownSelect(true);
         try {

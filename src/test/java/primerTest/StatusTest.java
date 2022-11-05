@@ -9,12 +9,12 @@ import pageObjects.StatusPage;
 public class StatusTest extends BaseTest {
     private StatusPage statusPage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         commonFlows.goStatusPage();
     }
 
-    @Test
+    @Test(groups = smoke)
     public void statusTest() {
         statusPage.status404();
         statusPage.goBack();

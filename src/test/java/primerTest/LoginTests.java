@@ -15,14 +15,14 @@ public class LoginTests extends BaseTest {
     private HomePage homePage;
     private SuccesLoginPage succesLoginPage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         commonFlows.goLoginPage();
     }
 
     @Test(groups = {smoke, regression})
     public void loginTest() {
-        var credentials = dataProvider.getValidCredentials();
+        var credentials = dataProvider.getInvalidValidCredentials();
         loginPage.fillForm(credentials.getUsername(), credentials.getPassword());
         succesLoginPage.waitPageToLoad();
     }

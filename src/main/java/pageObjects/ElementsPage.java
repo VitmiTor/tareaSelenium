@@ -17,11 +17,13 @@ public class ElementsPage extends BasePage {
         super(driver);
     }
 
+    @Step("Waiting ElementPage to load")
     @Override
     public void waitPageToLoad() {
         waitPage(buttonAddInput, this.getClass().getSimpleName());
     }
 
+    @Step("Verifying Elements Page")
     @Override
     public void verifyPage() {
         logs.info("verifying Button is displayed");
@@ -30,6 +32,7 @@ public class ElementsPage extends BasePage {
 
     @Step("Adding element")
     public void addElement(int n) {
+        logs.info("selecting on the button add option");
         for (var i = 0; i < n; i++) {
             buttonAddInput.click();
         }
@@ -37,11 +40,13 @@ public class ElementsPage extends BasePage {
 
     @Step("Getting size of elements")
     public int gettingSize() {
+        logs.info("getting the size of the List elements");
         return buttonDeleteInput.getSize();
     }
 
     @Step("Deleting elements")
     public void deletingElement(int n) {
+        logs.info("clicking on the delete button");
         for (var i = 0; i < n; i++) {
             buttonDeleteInput.getFirst().click();
         }

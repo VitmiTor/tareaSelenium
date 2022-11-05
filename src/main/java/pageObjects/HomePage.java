@@ -18,14 +18,22 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
+    @Step("Waiting HomePage to load")
     @Override
     public void waitPageToLoad() {
         waitPage(title, this.getClass().getSimpleName());
     }
 
+    @Step("Verifying Home Page")
     @Override
     public void verifyPage() {
-
+        softAssert.assertTrue(loginLinkInput.isDisplayed());
+        softAssert.assertTrue(title.isDisplayed());
+        softAssert.assertTrue(checkBoxLinkInput.isDisplayed());
+        softAssert.assertTrue(addElementsLinkInput.isDisplayed());
+        softAssert.assertTrue(statusLinkInput.isDisplayed());
+        softAssert.assertTrue(dropdownLink.isDisplayed());
+        softAssert.assertAll();
     }
 
     @Step("Clicking Login link")

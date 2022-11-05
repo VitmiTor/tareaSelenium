@@ -17,11 +17,13 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    @Step("Verifying loginPage to Load")
     @Override
     public void waitPageToLoad() {
         waitPage(usernameInput, this.getClass().getSimpleName());
     }
 
+    @Step("Verifying loginPage")
     @Override
     public void verifyPage() {
         logs.info("verifying elements of the form");
@@ -48,6 +50,7 @@ public class LoginPage extends BasePage {
         errorMessage.waitForVisibility();
         logs.info(errorMessage.getText());
         softAssert.assertTrue(errorMessage.isDisplayed(), "displayed");
+        logs.info("Comparing Error Text Message");
         softAssert.assertTrue(errorMessage.getText().contains(errorText), "text");
         softAssert.assertAll();
     }

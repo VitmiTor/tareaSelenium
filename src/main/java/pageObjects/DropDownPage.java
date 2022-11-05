@@ -17,11 +17,13 @@ public class DropDownPage extends BasePage {
         super(driver);
     }
 
+    @Step("Waiting DropdownPage to load")
     @Override
     public void waitPageToLoad() {
         waitPage(title, this.getClass().getSimpleName());
     }
 
+    @Step("Verifying Dropdown Page")
     @Override
     public void verifyPage() {
         logs.info("verifying title is displayed");
@@ -32,8 +34,10 @@ public class DropDownPage extends BasePage {
     public void dropDownSelect(boolean isOption1) {
         logs.info("selecting dropdown element");
         if (isOption1) {
+            logs.info("selecting on the first option");
             selectInput.selectByValue("1");
         } else {
+            logs.info("selecting on the second option");
             selectInput.selectByValue("2");
         }
     }

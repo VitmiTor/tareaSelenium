@@ -17,20 +17,24 @@ public class StatusPage extends BasePage {
         super(driver);
     }
 
+    @Step("Waiting StatusPage to load")
     @Override
     public void waitPageToLoad() {
         waitPage(title, this.getClass().getSimpleName());
     }
 
+    @Step("Verifying Status Page to load")
     @Override
     public void verifyPage() {
         logs.info("verifying title is displayed");
         Assert.assertTrue(title.isDisplayed());
     }
 
-    @Step("Clciking on status code 404")
+    @Step("Clicking on status code 404")
     public void status404() {
+        logs.info("Clicking on status code 404");
         link404.click();
+        logs.info("waiting for Link Here");
         linkHere.waitForVisibility();
     }
 
@@ -45,6 +49,7 @@ public class StatusPage extends BasePage {
         logs.info("verifying URL");
         link404.waitForVisibility();
         var mainmUrl = "http://the-internet.herokuapp.com/status_codes";
+        logs.info("Comparing URLs");
         Assert.assertEquals(mainmUrl, driver.getCurrentUrl());
     }
 }

@@ -18,11 +18,13 @@ public class CheckBoxPage extends BasePage {
         super(driver);
     }
 
+    @Step("Waiting CheckBoxPage to load")
     @Override
     public void waitPageToLoad() {
         waitPage(title, this.getClass().getSimpleName());
     }
 
+    @Step("Verifying CheckBox Page")
     @Override
     public void verifyPage() {
         logs.info("Verifying title");
@@ -31,6 +33,7 @@ public class CheckBoxPage extends BasePage {
 
     @Step("CheckBox First checkBox")
     public void clickFirst() {
+        logs.info("clicking on the first CheckBox");
         checkBoxes.getFirst().click();
     }
 
@@ -44,8 +47,10 @@ public class CheckBoxPage extends BasePage {
     public void verifyCheckBoxes(boolean checkBox1, boolean checkBox2) {
         logs.info("Verifying if the checkBox one is selected or not");
         softAssert.assertEquals(checkBoxes.getFirst().isSelected(), checkBox1);
+
         logs.info("Verifying if the checkBox two is selected or not");
         softAssert.assertEquals(checkBoxes.getLast().isSelected(), checkBox2);
+
         softAssert.assertAll();
     }
 }

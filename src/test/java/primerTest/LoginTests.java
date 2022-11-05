@@ -22,7 +22,7 @@ public class LoginTests extends BaseTest {
 
     @Test(groups = {smoke, regression})
     public void loginTest() {
-        var credentials = dataProvider.getInvalidValidCredentials();
+        var credentials = dataProvider.getValidCredentials();
         loginPage.fillForm(credentials.getUsername(), credentials.getPassword());
         succesLoginPage.waitPageToLoad();
     }

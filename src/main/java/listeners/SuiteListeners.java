@@ -2,7 +2,6 @@ package listeners;
 
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
-import utilities.DriverManager;
 import utilities.FileManager;
 import utilities.Logs;
 
@@ -11,7 +10,7 @@ public class SuiteListeners implements ISuiteListener {
 
     @Override
     public void onStart(ISuite suite) {
-        new DriverManager().deleteScreenShotDirectory();
+        new FileManager().deleteScreenShotDirectory();
         new FileManager().redirectStdErr();
         logs.startSuite(suite.getName());
     }

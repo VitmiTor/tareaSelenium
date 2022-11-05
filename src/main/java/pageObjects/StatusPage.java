@@ -24,7 +24,8 @@ public class StatusPage extends BasePage {
 
     @Override
     public void verifyPage() {
-
+        logs.info("verifying title is displayed");
+        Assert.assertTrue(title.isDisplayed());
     }
 
     @Step("Clciking on status code 404")
@@ -35,11 +36,13 @@ public class StatusPage extends BasePage {
 
     @Step("Clicking on go Back")
     public void goBack() {
+        logs.info("clicking link here to go back");
         linkHere.click();
     }
 
     @Step("verifying URL")
     public void verifyUrl() {
+        logs.info("verifying URL");
         link404.waitForVisibility();
         var mainmUrl = "http://the-internet.herokuapp.com/status_codes";
         Assert.assertEquals(mainmUrl, driver.getCurrentUrl());

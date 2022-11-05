@@ -3,6 +3,7 @@ package pageObjects;
 import base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import webElements.single.$;
 
 public class SuccesLoginPage extends BasePage {
@@ -20,6 +21,7 @@ public class SuccesLoginPage extends BasePage {
 
     @Override
     public void verifyPage() {
-
+        logs.info("verifying title is displayed");
+        Assert.assertTrue(title.isDisplayed());
     }
 }

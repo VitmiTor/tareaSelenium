@@ -10,7 +10,6 @@ import java.io.PrintStream;
 public class FileManager {
     private final Logs logs = new Logs();
     public static WebDriver staticDriver;
-    
 
     public FileManager redirectStdErr() {
         logs.debug("Redirecting stderr");
@@ -25,5 +24,4 @@ public class FileManager {
         System.setErr(ps);
         return this;
     }
-
 }

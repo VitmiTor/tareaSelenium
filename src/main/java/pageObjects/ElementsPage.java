@@ -4,6 +4,7 @@ import base.BasePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import webElements.list.$$;
 import webElements.single.$;
 
@@ -23,7 +24,8 @@ public class ElementsPage extends BasePage {
 
     @Override
     public void verifyPage() {
-
+        logs.info("verifying Button is displayed");
+        Assert.assertTrue(buttonAddInput.isDisplayed());
     }
 
     @Step("Adding element")

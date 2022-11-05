@@ -6,5 +6,4 @@ public interface IVerifications {
     boolean isEnable();
 
     boolean isSelected();
-
 }

@@ -4,6 +4,7 @@ import base.BasePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import webElements.single.$;
 
 public class DropDownPage extends BasePage {
@@ -23,11 +24,13 @@ public class DropDownPage extends BasePage {
 
     @Override
     public void verifyPage() {
-
+        logs.info("verifying title is displayed");
+        Assert.assertTrue(title.isDisplayed());
     }
 
     @Step("Selecting Dropdwon option")
     public void dropDownSelect(boolean isOption1) {
+        logs.info("selecting dropdown element");
         if (isOption1) {
             selectInput.selectByValue("1");
         } else {

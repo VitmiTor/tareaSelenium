@@ -24,6 +24,7 @@ public class LoginPage extends BasePage {
 
     @Override
     public void verifyPage() {
+        logs.info("verifying elements of the form");
         softAssert.assertTrue(usernameInput.isDisplayed());
         softAssert.assertTrue(passwordInput.isDisplayed());
         softAssert.assertTrue(loginButtonInput.isDisplayed());

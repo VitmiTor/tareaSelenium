@@ -48,7 +48,7 @@ public class StatusPage extends BasePage {
     public void verifyUrl() {
         logs.info("verifying URL");
         link404.waitForVisibility();
-        var mainmUrl = "google.com";//"http://the-internet.herokuapp.com/status_codes";
+        var mainmUrl = "http://the-internet.herokuapp.com/status_codes";
 
         logs.info("Comparing URLs");
         Assert.assertEquals(mainmUrl, driver.getCurrentUrl());

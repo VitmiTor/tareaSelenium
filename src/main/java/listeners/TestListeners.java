@@ -1,5 +1,6 @@
 package listeners;
 
+import base.BaseListeners;
 import base.BaseTest;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
@@ -8,13 +9,14 @@ import org.testng.ITestResult;
 import utilities.DriverManager;
 import utilities.Logs;
 
-public class TestListeners implements ITestListener {
+public class TestListeners extends BaseListeners implements ITestListener {
 
     private final Logs logs = new Logs();
 
     @Override
     public void onTestStart(ITestResult result) {
-        logs.startTest(result.getName());
+        logs.testSteps();
+        setDriver(result);
     }
 
     private WebDriver getDriverFromResult(ITestResult result) {
@@ -25,6 +27,7 @@ public class TestListeners implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult result) {
         logs.endTest("Success");
+        printSuccess(result.getInstanceName(), result.getName());
     }
 
     @Override
@@ -32,13 +35,14 @@ public class TestListeners implements ITestListener {
         logs.endTest("Fail");
         var driverManager = new DriverManager();
         var driver = getDriverFromResult(result);
-        driverManager.getScreenshot(driver, result.getName());
-        driverManager.attachAllureScreenShot(driver);
+        fileManager.getScreenshot(driver, result.getName());
+        //fileManager.attachAllureScreenShot(driver);
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
         logs.endTest("Skipped");
+        printSkipped(result.getInstanceName(), result.getName());
     }
 
     @Override
